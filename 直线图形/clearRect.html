@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>清空矩形</title>
+</head>
+<script type="text/javascript">
+	function $$(id) {
+		return document.getElementById(id);
+	};
+	window.onload = function () {
+		var cnv = $$("canvas");
+		var cxt = cnv.getContext("2d");
+
+		cxt.fillStyle = "HotPink";
+		cxt.fillRect(50, 50, 80, 80);
+		
+		var btn = $$("btn");
+		btn.onclick = function () {
+			cxt.clearRect(60, 60, 20, 20);
+		}
+	}
+</script>
+<body>
+	<canvas id="canvas" width="200" height="200" style="border: 1px dashed #000"></canvas>
+	<button id="btn">清空</button>
+</body>
+</html>
+

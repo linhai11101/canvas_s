@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>直线图形</title>
+	<script type="text/javascript">
+		function $$(id){
+			return document.getElementById(id);
+		}
+
+		window.onload = function() {
+			var cnv = $$("canvas");
+			var cxt = cnv.getContext("2d");
+
+			// 描边矩形
+			// cxt.strokeStyle = 属性值（十六进制颜色值，颜色关键字，rgb颜色值，rgba颜色值）;
+			// cxt.strokeRect(x, y, width, height);x和y为矩形最左上角的坐标（w3c坐标系），widht和height为矩形的宽高。
+
+			// cxt.strokeStyle = "red";
+			// cxt.strokeRect(50, 50, 80, 100);
+
+			// 填充矩形
+			// cxt.fillStyle = 属性值（同上）
+			// cxt.fillRect(x, y, width, height);同上
+			cxt.fillStyle = "red";
+			cxt.fillRect(50, 50, 80, 100);
+
+			// rect()方法
+			// rect(x, y, width, height);同上
+			// （1）rect()和stroke()
+			// cxt.strokeStyle = "red"
+			// cxt.rect(50, 50, 80, 80);
+			// cxt.stroke();
+			// 等价于
+			// cxt.strokeStyle = "red";
+			// cxt.strokeRect(50, 50, 80, 80);
+			// （2）rect()和fill()
+			// cxt.fillStyle = "red"
+			// cxt.rect(50, 50, 80, 80);
+			// cxt.fill();
+			// 等价于
+			// cxt.fillStyle = "red";
+			// cxt.fillRect(50, 50, 80, 80);
+			
+		}
+	</script>
+</head>
+<body>
+	<canvas id="canvas" width="200" height="200" style="border: 1px dashed #000"></canvas>
+</body>
+</html>
