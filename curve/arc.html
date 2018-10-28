@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>曲线1</title>
+</head>
+<script type="text/javascript">
+	function $$(id) {
+		return document.getElementById(id);
+	};
+	// 语法：
+	// cxt.beginPath();
+	// cxt.arc(x, y, 半径, 开始角度, 结束角度, anticclockwise);
+	// cxt.closePath();
+	// 在arc方法里面：
+	// x和y分别表示圆心的横坐标和纵坐标。
+	// 开始角度和结束角度都以弧度为单位，例如180deg就应该写成Math.PI，而360deg就应该写成Math.PI*2。
+	// anticlockwiae是一个布尔值，true表示逆时针方向，false表示顺时针方向。
+	window.onload = function () {
+		var cnv = $$("canvas");
+		var cxt = cnv.getContext("2d");
+		// 绘制半圆
+		cxt.beginPath();
+		cxt.arc(80, 80, 50, 0, (180/180)*Math.PI, true);
+		cxt.closePath();
+		// 描边
+		cxt.strokeStyle = "orange";
+		cxt.stroke();
+		// 绘制整圆
+		cxt.beginPath();
+		cxt.arc(150, 80, 50, 0, (360/180)*Math.PI, true);
+		cxt.closePath();
+		// 描边
+		cxt.strokeStyle = "blue";
+		cxt.stroke();
+		// 绘制弧线
+		cxt.beginPath();
+		cxt.arc(100, 100, 80, (90/180)*Math.PI, (180/180)*Math.PI, false);
+		// 注意画弧线是不需要closePath,使用closePath会是路径关闭，即形成一个闭合图形。
+		cxt.strokeStyle = "red";
+		cxt.stroke();
+		
+	}
+</script>
+<body>
+	<canvas id="canvas" width="200" height="200" style="border: 1px dashed #000"></canvas>
+</body>
+</html>

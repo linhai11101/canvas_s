@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>曲线1</title>
+</head>
+<script type="text/javascript">
+	function $$(id) {
+		return document.getElementById(id);
+	};
+	// 语法：
+	// cxt.arcTo(cx, cy, x2, y2, radius);
+	// 在arc方法里面：
+	// cx和cy表示控制点的坐标。
+	// x2和y2表示结束点的坐标。
+	// radius表示圆弧的半径。
+	window.onload = function () {
+		var cnv = $$("canvas");
+		var cxt = cnv.getContext("2d");
+		
+		cxt.moveTo(6, 6);
+		// cxt.lineTo(21, 6);
+		cxt.arcTo(36, 6, 36, 21, 15);
+		cxt.lineTo(36, 36);
+		cxt.stroke();
+		// arcTo方法绘制的弧线是两个切点之间长度最短的那个圆弧。
+		// 如果要画一条弧线需要提供三个点的坐标：开始点，控制点和结束点。其中一般由moveTo()和lineTo提供开始点，arcTo提供控制点和结束点。
+		// 开始点坐标并不一定是弧线起点坐标。
+		// 如果开始点不是弧线起点时，arcTo方法还将添加一条当前端点到弧线起点的直线线段。例如把上面代码的cxt.lineTo(70, 20)去掉。
+		createRoudeRect(cxt, 50, 50, 100, 80, 10);
+		cxt.fillStyle = "pink";
+		cxt.fill();
+	}
+	// 封装圆角矩形函数
+	var createRoudeRect = function(cxt, x, y, w, h, r) {
+		cxt.beginPath();
+		cxt.moveTo(x + r, y);
+		cxt.arcTo(x + w, y, x + w, y + r, r);
+		cxt.lineTo(x + w, y + h - r);
+		cxt.arcTo(x + w, y + h, x + w - r, y + h, r);
+		cxt.lineTo(x + r, y + h);
+		cxt.arcTo(x, y + h, x, y + h - r, r);
+		cxt.lineTo(x, y + r);
+		cxt.arcTo(x, y, x + r, y, r);
+		cxt.closePath();
+
+	}
+</script>
+<body>
+	<canvas id="canvas" width="200" height="200" style="border: 1px dashed #000"></canvas>
+</body>
+</html>
