@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>曲线1</title>
+</head>
+<script type="text/javascript">
+	function $$(id) {
+		return document.getElementById(id);
+	};
+	// 语法：
+	// cxt.lineWidth = 整数;
+	// lineWidth属性取值为整数，默认值为1，默认单位px
+	window.onload = function () {
+		var cnv = $$("canvas");
+		var cxt = cnv.getContext("2d");
+		
+		// lineWidth取值为5
+		cxt.lineWidth = 5;
+		cxt.moveTo(20, 20);
+		cxt.lineTo(20, 100);
+		cxt.stroke();
+
+		// lineWidth取值为10
+		cxt.beginPath();
+		cxt.lineWidth = 10;
+		cxt.moveTo(50, 20);
+		cxt.lineTo(50, 100);
+		cxt.stroke();
+
+		// lineWidth取值为20
+		cxt.beginPath();
+		cxt.lineWidth = 20;
+		cxt.moveTo(80, 20);
+		cxt.lineTo(80, 100);
+		cxt.stroke();
+	}
+</script>
+<body>
+	<canvas id="canvas" width="200" height="200" style="border: 1px dashed #000"></canvas>
+</body>
+</html>

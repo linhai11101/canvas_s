@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>曲线1</title>
+</head>
+<script type="text/javascript">
+	function $$(id) {
+		return document.getElementById(id);
+	};
+	// 语法：
+	// cxt.beginPath();
+	// cxt.arc(x, y, 半径, 开始角度, 结束角度, anticclockwise);
+	// cxt.closePath();
+	// 在arc方法里面：
+	// x和y分别表示圆心的横坐标和纵坐标。
+	// 开始角度和结束角度都以弧度为单位，例如180deg就应该写成Math.PI，而360deg就应该写成Math.PI*2。
+	// anticlockwiae是一个布尔值，true表示逆时针方向，false表示顺时针方向。
+	window.onload = function () {
+		var cnv = $$("canvas");
+		var cxt = cnv.getContext("2d");
+		
+		var colors = ["red", "pink", "orange", "blue", "gray", "black"];
+
+		for (var i = 0; i < 6; i++) {
+			createSector(cxt, cnv.width/2, cnv.height/2, 50, i * 60, (i + 1) * 60);
+			cxt.fillStyle = colors[i];
+			cxt.fill();
+		}
+
+		
+	}
+
+	function createSector(cxt, x, y, r, angle1, angle2) {
+		cxt.beginPath();
+		cxt.moveTo(x, y);
+		cxt.arc(x, y, r, angle1*Math.PI/180, angle2*Math.PI/180, false);
+		cxt.closePath();
+	}
+
+</script>
+<body>
+	<canvas id="canvas" width="200" height="200" style="border: 1px dashed #000"></canvas>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>三次贝塞尔曲线</title>
+</head>
+<script type="text/javascript">
+	function $$(id) {
+		return document.getElementById(id);
+	};
+	// 语法：
+	// cxt.bezierCurveTo(cx1, xy1, cx2, xy2, x, y);
+	window.onload = function () {
+		var cnv = $$("canvas");
+		var cxt = cnv.getContext("2d");
+		
+		cxt.moveTo(20, 80);
+		cxt.bezierCurveTo(20, 20, 120, 120, 120, 60);
+		cxt.strokeStyle = "blue";
+		cxt.stroke();
+
+		// 使用三次贝塞尔曲线绘制爱心
+		cxt.beginPath();
+		cxt.moveTo(75, 40);
+		cxt.bezierCurveTo(75, 37, 70, 25, 50, 25);
+		cxt.bezierCurveTo(20, 25, 20, 62.5, 20, 62.5);
+		cxt.bezierCurveTo(20, 80, 40, 102, 75, 120);
+		cxt.bezierCurveTo(110, 102, 130, 80, 130, 62.5);
+		cxt.bezierCurveTo(130, 62.5, 130, 25, 100, 25);
+		cxt.bezierCurveTo(85, 25, 75, 37, 75, 40);
+		cxt.strokeStyle = "red";
+		cxt.stroke();
+		
+	}
+</script>
+<body>
+	<canvas id="canvas" width="200" height="200" style="border: 1px dashed #000"></canvas>
+</body>
+</html>

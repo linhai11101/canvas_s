@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>曲线1</title>
+</head>
+<script type="text/javascript">
+	function $$(id) {
+		return document.getElementById(id);
+	};
+	// 语法：
+	// cxt.lineCap = Butt/Round/Square;
+	// Butt：默认值，无线冒；每条线的头端和尾端都是正方形，不做处理。
+	// Round：圆形线冒；每条线的头端和尾端都增加一个半圆，半圆直径为线宽的长度。
+	// Square：方形线冒；每条线的头端和尾端都增加一个长方形，长方形的长度为线宽的一般，高度保持为线宽长度。
+	window.onload = function () {
+		var cnv = $$("canvas");
+		var cxt = cnv.getContext("2d");
+		
+		cxt.lineWidth = 20;
+		// lineWidth取值为5
+		cxt.lineCap = "butt";
+		cxt.moveTo(20, 20);
+		cxt.lineTo(150, 20);
+		cxt.stroke();
+
+		// lineWidth取值为10
+		cxt.beginPath();
+		cxt.lineCap = "round";
+		cxt.moveTo(20, 50);
+		cxt.lineTo(150, 50);
+		cxt.stroke();
+
+		// lineWidth取值为20
+		cxt.beginPath();
+		cxt.lineCap = "square";
+		cxt.moveTo(20, 80);
+		cxt.lineTo(150, 80);
+		cxt.stroke();
+	}
+</script>
+<body>
+	<canvas id="canvas" width="200" height="200" style="border: 1px dashed #000"></canvas>
+</body>
+</html>
